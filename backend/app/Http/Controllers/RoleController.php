@@ -14,7 +14,19 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $role = Role::orderBy('id', 'asc')->get();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Role berhasil ditampilkan',
+                'data' => $role
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -35,7 +47,21 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $role = Role::create([
+                'role' => $request->role
+            ]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Role berhasil ditambahkan',
+                'data' => $role
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -67,9 +93,23 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            $role = Role::where('id', $id)->update([
+                'role' => $request->role
+            ]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Role berhasil diupdate',
+                'data' => $role
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -78,8 +118,20 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        //
+        try {
+            $role = Role::where('id', $id)->delete();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Role berhasil dihapus',
+                'data' => $role
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ]);
+        }
     }
 }

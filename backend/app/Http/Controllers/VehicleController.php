@@ -14,7 +14,19 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $vehicle = vehicle::orderBy('id', 'asc')->get();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Vehicle berhasil ditampilkan',
+                'data' => $vehicle
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -35,7 +47,29 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $vehicle = vehicle::create([
+                'category' => $request->category,
+                'type' => $request->type,
+                'name' => $request->name,
+                'police_number' => $request->police_number,
+                'color' => $request->color,
+                'year' => $request->year,
+                'price' => $request->price,
+                'stock' => $request->stock,
+                'description' => $request->description
+            ]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Vehicle berhasil ditambahkan',
+                'data' => $vehicle
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -44,11 +78,22 @@ class VehicleController extends Controller
      * @param  \App\Models\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function show(vehicle $vehicle)
+    public function show($id)
     {
-        //
+        try {
+            $vehicle = vehicle::where('id', $id)->first();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Vehicle berhasil ditampilkan',
+                'data' => $vehicle
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ]);
+        }
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -67,9 +112,31 @@ class VehicleController extends Controller
      * @param  \App\Models\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, vehicle $vehicle)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            $vehicle = vehicle::where('id', $id)->update([
+                'category' => $request->category,
+                'type' => $request->type,
+                'name' => $request->name,
+                'police_number' => $request->police_number,
+                'color' => $request->color,
+                'year' => $request->year,
+                'price' => $request->price,
+                'stock' => $request->stock,
+                'description' => $request->description
+            ]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Vehicle berhasil diupdate',
+                'data' => $vehicle
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -78,8 +145,20 @@ class VehicleController extends Controller
      * @param  \App\Models\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(vehicle $vehicle)
+    public function destroy($id)
     {
-        //
+        try {
+            $vehicle = vehicle::where('id', $id)->delete();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Vehicle berhasil dihapus',
+                'data' => $vehicle
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ]);
+        }
     }
 }
