@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\RoleController;
+use App\Http\Controllers\Api\VehicleController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\ApprovalController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +27,15 @@ Route::prefix('/auth')->group(function(){
 
 });
 
-Route::apiResource('/users', UserController::class);
-Route::apiResource('/roles', RoleController::class);
-Route::apiResource('/vehicles', VehicleController::class);
+Route::middleware('auth:sanctum')->group(function(){
+    Route::prefix('/auth')->group(function(){
+        Route::post('/logout', [AuthController::class, 'Logout']);
+    });
+
+    Route::apiResource('/users', UserController::class);
+    Route::apiResource('/roles', RoleController::class);
+    Route::apiResource('/vehicles', VehicleController::class);  
+
+});
+
+

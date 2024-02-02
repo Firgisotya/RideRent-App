@@ -6,8 +6,6 @@ use App\Models\User;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Tymon\JWTAuth\Facades\JWTAuth;
-use Tymon\JWTAuth\JWT;
 use App\Traits\ApiResponse;
 
 class AuthController extends Controller
@@ -56,7 +54,7 @@ class AuthController extends Controller
                     'message' => 'Password salah'
                 ]);
             }
-            $token = JWTAuth::claims(['user' => $user])->attempt($request->only('email', 'password'));
+            $token = $user->createToken('token')->plainTextToken;
             return response()->json([
                 'status' => 'success',
                 'message' => 'Login berhasil',
@@ -64,10 +62,10 @@ class AuthController extends Controller
                 'token' => $token
             ]);
         } catch (\Throwable $th) {
-            return response()->json([
-                'status' => 'error',
-                'message' => $th->getMessage()
-            ]);
+            throw new HttpResponseException($this->apiError(
+                $e->getMessage(),
+                Response::HTTP_UNAUTHORIZED
+            ));
         }
     }
 
