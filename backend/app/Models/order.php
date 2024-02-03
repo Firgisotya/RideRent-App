@@ -14,7 +14,7 @@ class order extends Model
         'user_id',
         'vehicle_id',
         'employee_name',
-        'drriver_name',
+        'driver_name',
         'order_date',
         'date_of_return',
         'approval_status',
@@ -29,12 +29,12 @@ class order extends Model
 
     public function vehicle()
     {
-        return $this->belongsTo(Vehicle::class);
+        return $this->belongsTo(vehicle::class);
     }
 
     public function approval()
     {
-        return $this->hasMany(Approval::class, 'order_id', 'order_id');
+        return $this->hasMany(approval::class, 'order_id', 'order_id');
     }
     
 }

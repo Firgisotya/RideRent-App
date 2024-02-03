@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Traits\ApiResponse;
+use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
+    use ApiResponse;
     public function Register(Request $request)
     {
        try {
@@ -63,7 +66,7 @@ class AuthController extends Controller
             ]);
         } catch (\Throwable $th) {
             throw new HttpResponseException($this->apiError(
-                $e->getMessage(),
+                $th->getMessage(),
                 Response::HTTP_UNAUTHORIZED
             ));
         }
@@ -72,16 +75,16 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         try {
-            JWTAuth::invalidate(JWTAuth::getToken());
+            $request->user()->tokens()->delete();
             return response()->json([
                 'status' => 'success',
                 'message' => 'Logout berhasil'
             ]);
         } catch (\Throwable $th) {
-            return response()->json([
-                'status' => 'error',
-                'message' => $th->getMessage()
-            ]);
+            throw new HttpResponseException($this->apiError(
+                $th->getMessage(),
+                Response::HTTP_UNAUTHORIZED
+            ));
         }
     }
 

@@ -21,9 +21,7 @@ class CreateVehiclesTable extends Migration
             $table->string('police_number');
             $table->string('color');
             $table->string('year');
-            $table->string('price');
             $table->integer('stock')->default(1);
-            $table->string('description');
             $table->timestamps();
         });
     }

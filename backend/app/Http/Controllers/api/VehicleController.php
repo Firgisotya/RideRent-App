@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use App\Models\vehicle;
 use Illuminate\Http\Request;
 
@@ -55,9 +56,7 @@ class VehicleController extends Controller
                 'police_number' => $request->police_number,
                 'color' => $request->color,
                 'year' => $request->year,
-                'price' => $request->price,
-                'stock' => $request->stock,
-                'description' => $request->description
+                'stock' => $request->stock
             ]);
             return response()->json([
                 'status' => 'success',
@@ -122,9 +121,7 @@ class VehicleController extends Controller
                 'police_number' => $request->police_number,
                 'color' => $request->color,
                 'year' => $request->year,
-                'price' => $request->price,
-                'stock' => $request->stock,
-                'description' => $request->description
+                'stock' => $request->stock
             ]);
             return response()->json([
                 'status' => 'success',

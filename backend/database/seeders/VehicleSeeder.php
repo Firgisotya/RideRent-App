@@ -22,9 +22,7 @@ class VehicleSeeder extends Seeder
                 'police_number' => 'B 1234 ABC',
                 'color' => 'Black',
                 'year' => '2022',
-                'price' => '500000000',
                 'stock' => 1,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
             ],
             [
                 'category' => 'Sedan',
@@ -33,9 +31,7 @@ class VehicleSeeder extends Seeder
                 'police_number' => 'B 5678 DEF',
                 'color' => 'White',
                 'year' => '2022',
-                'price' => '300000000',
                 'stock' => 1,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
             ],
             [
                 'category' => 'Truck',
@@ -44,9 +40,7 @@ class VehicleSeeder extends Seeder
                 'police_number' => 'B 9101 GHI',
                 'color' => 'Red',
                 'year' => '2022',
-                'price' => '400000000',
                 'stock' => 1,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
             ],
             [
                 'category' => 'Van',
@@ -55,9 +49,7 @@ class VehicleSeeder extends Seeder
                 'police_number' => 'B 1121 JKL',
                 'color' => 'Silver',
                 'year' => '2022',
-                'price' => '600000000',
                 'stock' => 1,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
             ],
             [
                 'category' => 'Motorcycle',
@@ -66,9 +58,7 @@ class VehicleSeeder extends Seeder
                 'police_number' => 'B 3141 MNO',
                 'color' => 'Blue',
                 'year' => '2022',
-                'price' => '20000000',
                 'stock' => 1,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
             ]
         ]);
     }
