@@ -74,7 +74,7 @@ Aplikasi ini menggunakan kombinasi Laravel sebagai backend dan Angular sebagai f
 - Dokumentasi Laravel: https://laravel.com/docs/8.x
 ### Frontend (Angular)
 - Framework: Angular
-- Versi Angular: 15
+- Versi Angular: 16
 - Dokumentasi Angular: https://angular.io/docs
 
 pastikan sudah menjalankan backend
