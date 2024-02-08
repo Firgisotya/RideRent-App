@@ -85,8 +85,17 @@ class ApprovalController extends Controller
      public function showByUserId()
      {
          try {
-             $response = Approval::with(['order', 'user'])->where('user_id', Auth::user()->id)->orderBy('level', 'asc')->get();
-             return $this->apiSuccess($response, Response::HTTP_OK);
+
+            if (Auth::user()->role_id == 2) {
+                $response = Approval::with(['order', 'user'])->where('level', 1)->orderBy('level', 'asc')->get();
+                return $this->apiSuccess($response, Response::HTTP_OK);
+            } else if (Auth::user()->role_id == 3) {
+                $response = Approval::with(['order', 'user'])->where('level', 2)->orderBy('level', 'asc')->get();
+                return $this->apiSuccess($response, Response::HTTP_OK);
+            } else if (Auth::user()->role_id == 4) {
+                $response = Approval::with(['order', 'user'])->where('level', 3)->orderBy('level', 'asc')->get();
+                return $this->apiSuccess($response, Response::HTTP_OK);
+            }
          } catch (\Throwable $e) {
              return $this->apiError(
                  $e->getMessage(),

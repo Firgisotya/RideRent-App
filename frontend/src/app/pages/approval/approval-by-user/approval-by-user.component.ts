@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class ApprovalByUserComponent {
   approvals: any;
+  userRole: any;
 
   constructor(
     private service: ApprovalService
@@ -16,7 +17,10 @@ export class ApprovalByUserComponent {
     this.getApprovalByUserId();
   }
 
+
+
   getApprovalByUserId = () => {
+
     this.service.getApprovalByUserId().subscribe(
       (data: any) => {
         this.approvals = data.data;
@@ -25,6 +29,7 @@ export class ApprovalByUserComponent {
         console.log(error);
       }
     )
+
   }
 
   formatDate(dateString: string): string {

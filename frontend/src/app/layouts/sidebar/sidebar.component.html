@@ -75,7 +75,7 @@
               </a>
             </li>
           </div>
-          <div *ngIf="_storage.getUser().role_id == 2">
+          <div *ngIf="_storage.getUser().role_id != 1">
             <li class="sidebar-item">
               <a class="sidebar-link" routerLink="approvals/by/user" aria-expanded="false">
                 <span>

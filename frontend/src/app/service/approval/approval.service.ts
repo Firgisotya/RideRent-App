@@ -24,6 +24,24 @@ export class ApprovalService {
     )
   }
 
+  getApprovalLeader = () => {
+    return this.http.get(this._url + "/approvals/list-approval-leader", httpHeadersLoggedIn).pipe(
+      catchError(new httpHelper().errorHttpHelper)
+    )
+  }
+
+  getApprovalBySpv = () => {
+    return this.http.get(this._url + "/approvals/list-approval-spv", httpHeadersLoggedIn).pipe(
+      catchError(new httpHelper().errorHttpHelper)
+    )
+  }
+
+  getApprovalByHead = () => {
+    return this.http.get(this._url + "/approvals/list-approval-head", httpHeadersLoggedIn).pipe(
+      catchError(new httpHelper().errorHttpHelper)
+    )
+  }
+
   getApprovalByUserId = () => {
     return this.http.get(this._url + "/approvals/by/user", httpHeadersLoggedIn).pipe(
       catchError(new httpHelper().errorHttpHelper)
