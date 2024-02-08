@@ -4,14 +4,19 @@ Aplikasi ini digunakan untuk melakukan pemesanan kendaraan dengan beberapa fitur
 
 ## Daftar Isi
 
-- [Informasi Proyek](#informasi-proyek)
-- [Persyaratan Sistem](#persyaratan-sistem)
-- [Instalasi](#instalasi)
-- [Penggunaan](#penggunaan)
-- [Daftar Username-Password](#daftar-username-password)
-- [Framework](#framework)
-- [File Pendukung](#file-pendukung)
-- [Author](#Author)
+- [RideRent App (Aplikasi Pemesanan Kendaraan)](#riderent-app-aplikasi-pemesanan-kendaraan)
+  - [Daftar Isi](#daftar-isi)
+  - [Informasi Proyek](#informasi-proyek)
+  - [Persyaratan Sistem](#persyaratan-sistem)
+  - [Instalasi](#instalasi)
+    - [Backend](#backend)
+    - [Frontend](#frontend)
+  - [Penggunaan](#penggunaan)
+  - [Daftar Username-Password](#daftar-username-password)
+  - [Framework](#framework)
+    - [Backend (Laravel)](#backend-laravel)
+    - [Frontend (Angular)](#frontend-angular)
+  - [Author](#author)
 
 ## Informasi Proyek
 
@@ -59,10 +64,12 @@ Clone repositori ini ke dalam direktori komputer anda
 
 ## Daftar Username-Password
 
-| Email             | Password    | Role   |
-| ----------------- | ----------- | ------ |
-| admin@gmail.com    | password    | Admin  |
-| user@gmail.com     | password    | User   |
+| Email             | Password    | Role      |
+| ----------------- | ----------- | --------- |
+| admin@gmail.com   | password    | Admin     |
+| leader@gmail.com  | password    | Leader    |
+| spv@gmail.com     | password    | SPV       |
+| dhead@gmail.com   | password    | Dept Head |
 
 ## Framework
 
