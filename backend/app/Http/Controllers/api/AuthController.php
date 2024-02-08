@@ -49,13 +49,13 @@ class AuthController extends Controller
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Email tidak terdaftar'
-                ]);
+                ], 401);
             }
             if(!Hash::check($request->password, $user->password)){
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Password salah'
-                ]);
+                ], 401);
             }
             $token = $user->createToken('token')->plainTextToken;
             return response()->json([

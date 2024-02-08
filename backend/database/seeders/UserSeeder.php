@@ -22,10 +22,22 @@ class UserSeeder extends Seeder
                 'role_id' => 1
             ],
             [
-                'name' => 'User',
-                'email' => 'user@gmail.com',
+                'name' => 'Leader',
+                'email' => 'leader@gmail.com',
                 'password' => bcrypt('password'),
                 'role_id' => 2
+            ],
+            [
+                'name' => 'SPV',
+                'email' => 'spv@gmail.com',
+                'password' => bcrypt('password'),
+                'role_id' => 3
+            ],
+            [
+                'name' => 'Dept Head',
+                'email' => 'dhead@gmail.com',
+                'password' => bcrypt('password'),
+                'role_id' => 4
             ]
         ]);
     }

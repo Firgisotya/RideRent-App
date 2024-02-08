@@ -19,7 +19,13 @@ class RoleSeeder extends Seeder
                 'role' => 'admin'
             ],
             [
-                'role' => 'user'
+                'role' => 'leader'
+            ],
+            [
+                'role' => 'spv'
+            ],
+            [
+                'role' => 'dept_head'
             ]
         ]);
     }
