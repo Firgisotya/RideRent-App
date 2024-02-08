@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
@@ -41,7 +43,7 @@ class AuthController extends Controller
        }
     }
 
-    public function Login(Request $request)
+    public function Login(LoginRequest $request)
     {
         try {
             $user = User::where('email', $request->email)->first();
@@ -72,7 +74,7 @@ class AuthController extends Controller
         }
     }
 
-    public function logout(Request $request)
+    public function logout(RegisterRequest $request)
     {
         try {
             $request->user()->tokens()->delete();

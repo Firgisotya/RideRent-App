@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\VehicleRequest;
 use App\Models\vehicle;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,7 @@ class VehicleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VehicleRequest $request)
     {
         try {
             $vehicle = vehicle::create([
@@ -111,7 +112,7 @@ class VehicleController extends Controller
      * @param  \App\Models\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(VehicleRequest $request, $id)
     {
         try {
             $vehicle = vehicle::where('id', $id)->update([

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OrderRequest;
+use App\Http\Requests\RangeDateRequest;
 use App\Models\order;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
@@ -34,7 +36,7 @@ class OrderController extends Controller
         } 
     }
 
-    public function reportOrderByRangeDate(Request $request)
+    public function reportOrderByRangeDate(RangeDateRequest $request)
     {
         try {
             $startDate = Carbon::parse($request->start_date);
@@ -57,7 +59,7 @@ class OrderController extends Controller
         }
     }
 
-    public function reportApprovedOrders(Request $request)
+    public function reportApprovedOrders()
     {
         try {
             $response = Order::selectRaw('DATE(order_date) as date, count(*) as total')
@@ -93,7 +95,7 @@ class OrderController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(OrderRequest $request)
     {
         try {
             $validated = $request->validate([
@@ -176,7 +178,7 @@ class OrderController extends Controller
 
     }
 
-    public function update(Request $request, $id)
+    public function update(OrderRequest $request, $id)
     {
         try {
             $validated = $request->validated();

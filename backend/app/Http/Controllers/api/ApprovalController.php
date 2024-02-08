@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ApprovalRequest;
 use App\Models\approval;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
@@ -27,14 +28,10 @@ class ApprovalController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(ApprovalRequest $request)
     {
         try {
-            $validated = $request->validate([
-                'order_id' => 'required',
-                'user_id' => 'required',
-                'level' => 'required'
-            ]);
+            $validated = $request->validated();
             // check level is exist by order id
             $checkLevel = Approval::where('order_id', $validated['order_id'])
                 ->where('level', $validated['level'])

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +26,7 @@ class UserController extends Controller
         }
     }
 
-    public function store(Request $request){
+    public function store(UserRequest $request){
         try {
             $user = User::create([
                 'name' => $request->name,
@@ -62,7 +63,7 @@ class UserController extends Controller
         }
     }
 
-    public function update(Request $request, $id){
+    public function update(UserRequest $request, $id){
         try {
             $user = User::where('id', $id)->update([
                 'name' => $request->name,
